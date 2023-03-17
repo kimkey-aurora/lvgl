@@ -16,8 +16,14 @@
 /*********************
  *      DEFINES
  *********************/
- #define MY_DISP_HOR_RES	ATK_MD0700_LCD_WIDTH
- #define MY_DISP_VER_RES	ATK_MD0700_LCD_HEIGHT
+ /* 0: ver-dir; 1:hor-dir*/
+#if 1
+	#define MY_DISP_HOR_RES	ATK_MD0700_LCD_WIDTH
+	#define MY_DISP_VER_RES	ATK_MD0700_LCD_HEIGHT
+#else
+	#define MY_DISP_HOR_RES	ATK_MD0700_LCD_HEIGHT
+	#define MY_DISP_VER_RES	ATK_MD0700_LCD_WIDTH
+#endif
 #ifndef MY_DISP_HOR_RES
     #warning Please define or replace the macro MY_DISP_HOR_RES with the actual screen width, default value 320 is used for now.
     #define MY_DISP_HOR_RES    320
