@@ -7,9 +7,12 @@
  *      INCLUDES
  *********************/
 #include "../../../lvgl.h"
+#include "BSP/SDIO/sdio_sdcard.h"
+#include "exfuns/exfuns.h"
+#include "SYSTEM/usart/usart.h"
 
 #if LV_USE_FS_FATFS
-#include "ff.h"
+#include "FATFS/src/ff.h"
 
 /*********************
  *      DEFINES
@@ -92,6 +95,12 @@ static void fs_init(void)
 {
     /*Initialize the SD card and FatFS itself.
      *Better to do it in your code to keep this library untouched for easy updating*/
+	while(SD_Init()) {
+		printf("SD Card Error! Please check!\r\n");
+		HAL_Delay(200);
+	}
+	exfuns_init();
+	f_mount(fs[0], "0:", 1);
 }
 
 /**

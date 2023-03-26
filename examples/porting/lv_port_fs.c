@@ -1,5 +1,5 @@
 /**
- * @file lv_port_fs_templ.c
+ * @file lv_port_fs.c
  *
  */
 
@@ -9,8 +9,9 @@
 /*********************
  *      INCLUDES
  *********************/
-#include "lv_port_fs_template.h"
+#include "lv_port_fs.h"
 #include "../../lvgl.h"
+#include "ff.h"
 
 /*********************
  *      DEFINES
@@ -110,6 +111,7 @@ static void * fs_open(lv_fs_drv_t * drv, const char * path, lv_fs_mode_t mode)
     void * f = NULL;
 
     if(mode == LV_FS_MODE_WR) {
+		f_open();
         /*Open a file for write*/
         f = ...         /*Add your code here*/
     }
